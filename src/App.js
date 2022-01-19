@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import CssBaseline from "@mui/material/CssBaseline";
+import Container from "@mui/material/Container";
+import { AppBar, Box, Button, IconButton, Toolbar, Typography } from "@mui/material";
+import { Routes, Route, Link, BrowserRouter } from "react-router-dom";
+import PostAxios from "./component/PostAxios";
+import PostRedux from "./component/PostRedux";
+import Navbar from "./component/Navbar";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CssBaseline />
+      <Container>
+        {/* Nav Bar */}
+        <BrowserRouter>
+          <Box sx={{ display: "none" }}>
+            <Link to={"/"}>Axios</Link>
+            <Link to={"/redux"}>Redux</Link>
+          </Box>
+
+          <Routes>
+            <Route exact path="/" element={<PostAxios />} />
+            <Route exact path="redux" element={<PostRedux />} />
+          </Routes>
+        </BrowserRouter>
+
+        <br />
+      </Container>
     </div>
   );
 }
